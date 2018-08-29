@@ -1,0 +1,43 @@
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="1959816927586032"
+  theme_color="#20cef5"
+  logged_in_greeting="Swing Bot figures out buy and sell points based on each stock's history."
+  logged_out_greeting="Swing Bot figures out buy and sell points based on each stock's history.">
+</div>
+<div class="row" *ngIf="symbol">
+  <div class="col-sm-12">
+    <nb-card>
+      <nb-card-header>
+        {{symbol}} - {{analysis}}
+      </nb-card-header>
+      <nb-card-body>
+        <canvas id="myChart"></canvas>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xxxl-9 col-xxl-8 col-lg-7 col-md-6">
+    <nb-card>
+      <nb-card-header>
+        Swing Targets
+        <div class="fb-like pull-right" data-href="https://freestock.market/#/bots/swing" data-layout="button" data-action="like"
+          data-size="small" data-show-faces="true" data-share="false"></div>
+       </nb-card-header>
+      <nb-card-body>
+        <sub>Buy and sell triggers based on each stock's historical trends. Connect to Robinhood to atuomatically place stoploss orders
+          every day. <span style="color:red">This bot is not ready and should not be used.</span> Click a symbol for details.</sub>
+        <br>
+        <br>
+        <ng2-smart-table [settings]="swingBotSettings" [source]="swingBotSource" (userRowSelect)="onUserRowSelect($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-bot-profile title="Swing Bot" subtitle="Trigger" type="success" pictureUrl="../../../../assets/images/swing-flat.svg"
+      description="Buy low. Sell high."></ngx-bot-profile>
+  </div>
+</div>
